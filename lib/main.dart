@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'telas/homeScreen.dart';
+import 'telas/loadingScreen.dart';
 import 'telas/loginScreen.dart';
 import 'telas/cadastroScreen.dart';
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MarcaSoM App',
-      home: HomeScreen(),
+      home: LoginScreen(),
       routes: {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),

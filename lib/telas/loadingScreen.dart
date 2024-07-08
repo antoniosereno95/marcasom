@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'loginScreen.dart';  // Importando a tela de login
+import 'loginScreen.dart';  
 
-class HomeScreen extends StatelessWidget {
+class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF9C27B0),  // Cor de fundo roxa
+      backgroundColor: Color(0xFF9C27B0),  
       body: Center(
         child: GestureDetector(
           onTap: () {
-            // Navegar para a página de login ao tocar no ícone
+            
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),

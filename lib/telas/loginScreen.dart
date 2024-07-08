@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'lib/assets/images/logobranco.png',  // Substitua pelo caminho da sua imagem de logo
+                    'lib/assets/images/logobranco.png',  
                     height: 100,
                   ),
                   SizedBox(height: 20),
@@ -68,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 15.0),
                 child: Text(
                   'Acessar',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
               ),
             ),
