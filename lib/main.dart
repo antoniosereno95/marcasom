@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'telas/loadingScreen.dart';
 import 'telas/loginScreen.dart';
 import 'telas/cadastroScreen.dart';
 

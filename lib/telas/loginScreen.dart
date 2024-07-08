@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'loadingScreen.dart';
 import 'cadastroScreen.dart';
 
 class LoginScreen extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +19,7 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'lib/assets/images/logobranco.png',  
+                    'lib/assets/images/logobranco.png',
                     height: 100,
                   ),
                   SizedBox(height: 20),
@@ -32,6 +36,7 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 50),
             TextField(
+              controller: emailController,
               decoration: InputDecoration(
                 hintText: 'E-mail',
                 border: OutlineInputBorder(
@@ -43,6 +48,7 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextField(
+              controller: senhaController,
               decoration: InputDecoration(
                 hintText: 'Senha',
                 border: OutlineInputBorder(
@@ -56,7 +62,20 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Ação ao clicar no botão de acessar
+                // Verifique se o e-mail e a senha são iguais a "marcasom"
+                if (emailController.text == 'marcasom' &&
+                    senhaController.text == 'marcasom') {
+                  // Navegar para a página de loading
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoadingScreen()),
+                  );
+                } else {
+                  // Mostre uma mensagem de erro
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('E-mail ou senha incorretos')),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF9C27B0),
