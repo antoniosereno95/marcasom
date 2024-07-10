@@ -10,7 +10,7 @@ class BuscaInicial extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/assets/images/logo marcasom tela inicial.png'),
+                image: AssetImage('lib/assets/Logo-Tela de Loading.svg'),
                 fit: BoxFit.cover,
               ),
             ),

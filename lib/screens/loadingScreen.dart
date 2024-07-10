@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:async';
-import 'buscaInicial.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -13,10 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
     // Redireciona para a página de login após 3 segundos
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => BuscaInicial()),
-      );
+      Navigator.pushReplacementNamed(context, '/login');
     });
   }
 
@@ -28,18 +25,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
+            SvgPicture.asset(
               'lib/assets/Logo-Tela de Loading.svg',
-              width: 150,
-              height: 150,
-            ),
-            SizedBox(height: 20),
-            Text(
-              'MarcaSoM',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.white,
-              ),
+              width: 200,
+              height: 220,
             ),
           ],
         ),

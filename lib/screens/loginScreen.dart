@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'loadingScreen.dart';
-import 'cadastroScreen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -9,108 +8,89 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      backgroundColor: Colors.white,
+body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(height: 100),
             Center(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'lib/assets/images/logobranco.png',
-                    height: 100,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'MarcaSoM',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF9C27B0),
-                    ),
-                  ),
-                ],
+              child: SvgPicture.asset(
+                'lib/assets/Logo-LoginCadastro.svg',
+                width: 240,
+                height: 40,
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             TextField(
               controller: emailController,
               decoration: InputDecoration(
                 hintText: 'E-mail',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide.none,
                 ),
                 filled: true,
                 fillColor: Colors.grey[200],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               controller: senhaController,
               decoration: InputDecoration(
                 hintText: 'Senha',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide.none,
                 ),
                 filled: true,
                 fillColor: Colors.grey[200],
               ),
               obscureText: true,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Verifique se o e-mail e a senha são iguais a "marcasom"
                 if (emailController.text == 'marcasom' &&
                     senhaController.text == 'marcasom') {
-                  // Navegar para a página de loading
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoadingScreen()),
-                  );
+                  Navigator.pushReplacementNamed(context, '/home');
                 } else {
-                  // Mostre uma mensagem de erro
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('E-mail ou senha incorretos')),
+                    const SnackBar(content: Text('E-mail ou senha incorretos')),
                   );
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF9C27B0),
+                backgroundColor: const Color(0xFF9C27B0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0),
                 child: Text(
                   'Acessar',
-                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Center(
-              child: Column(
-                children: [
-                  Text(
-                    'Ainda não é membro?',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
+            const SizedBox(height: 20),
+           Column(
+              crossAxisAlignment: CrossAxisAlignment.start, 
+              children: [
+                Text(
+                  'Ainda não é membro?',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      // Navegar para a página de cadastro
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignupScreen()),
-                      );
-                    },
-                    child: Text(
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
+                    child: const Text(
                       'Cadastre-se',
                       style: TextStyle(
                         fontSize: 16,
@@ -121,7 +101,6 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
           ],
         ),
       ),
