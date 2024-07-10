@@ -29,7 +29,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'lib/assets/images/logo marcasom tela inicial.png',
+              'lib/assets/Logo-Tela de Loading.svg',
               width: 150,
               height: 150,
             ),
