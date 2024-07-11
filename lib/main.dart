@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'screens/calendario.dart';
+import 'screens/feedArtistas.dart';
 import 'screens/loadingScreen.dart';
 import 'screens/loginScreen.dart';
 import 'screens/cadastroScreen.dart';
@@ -23,7 +25,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
-        '/home': (context) => PerfilScreen(),
+        '/home': (context) => BuscaInicial(),
+        '/perfil': (context) => PerfilScreen(),
+        '/calendario': (context) => Calendario(),
+        '/feed': (context) => FeedArtistas(),
       },
     );
   }

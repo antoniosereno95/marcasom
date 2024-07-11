@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marcasom/screens/loginScreen.dart';
-
 import '../widgets/barraNavegacao.dart';
+import 'loginScreen.dart';
 
-class PerfilScreen extends StatelessWidget {
+class Calendario extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +10,7 @@ class PerfilScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF9C27B0),
         elevation: 0,
         centerTitle: true,
-        title: const Text('Perfil do Usuario'),
+        title: const Text('Calendario'),
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -41,11 +40,10 @@ class PerfilScreen extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: const Color(0xFFFAFAFA),
       body: Center(
-        child: Text('Perfil do Usuario'),
+        child: Text('Tela de Feed de Artistas'),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 3),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 2),
     );
   }
 }
