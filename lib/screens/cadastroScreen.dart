@@ -130,7 +130,6 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Para ir para página de Termos de Uso
                         },
                     ),
                     TextSpan(
@@ -142,7 +141,6 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Para ir para página de Política de Privacidade
                         },
                     ),
                   ],
@@ -167,7 +165,6 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Para ir para página de Formulário de Contato
                         },
                     ),
                     TextSpan(
@@ -180,7 +177,6 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Para ir para página de Política de Privacidade
                         },
                     ),
                   ],

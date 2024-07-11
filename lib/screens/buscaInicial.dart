@@ -2,25 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/searchArtist.dart';
+import 'loginScreen.dart';
 
 class BuscaInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF9C27B0),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => LoginScreen()),
+            );
+          },
+        ),
+      ),
       backgroundColor: const Color(0xFFFAFAFA),
       body: Stack(
         children: [
-          // Background Image
           Container(
-  width: double.infinity,
-  height: MediaQuery.of(context).size.height / 2,
-  decoration: const BoxDecoration(
-    image: DecorationImage(
-      image: AssetImage('lib/assets/ImagemDaHome.svg'),
-      fit: BoxFit.cover,
-    ),
-  ),
-),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height / 2,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('lib/assets/ImagemDaHome.svg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
 
           SingleChildScrollView(
             child: Container(
@@ -28,7 +41,6 @@ class BuscaInicial extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 40),
-                  // Top Text
                   const Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
@@ -44,8 +56,7 @@ class BuscaInicial extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 2 - 80), // Adjust height as needed
-                  // Centered Search Artist
+                  SizedBox(height: MediaQuery.of(context).size.height / 2 - 80), 
                   Align(
                     alignment: Alignment.center,
                     child: SearchArtist(),

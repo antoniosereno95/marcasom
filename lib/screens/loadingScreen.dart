@@ -11,7 +11,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    // Redireciona para a página de login após 3 segundos
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, '/login');
     });
