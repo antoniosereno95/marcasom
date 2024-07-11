@@ -3,6 +3,7 @@ import 'screens/loadingScreen.dart';
 import 'screens/loginScreen.dart';
 import 'screens/cadastroScreen.dart';
 import 'screens/buscaInicial.dart';
+import 'screens/perfilScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
-        '/home': (context) => BuscaInicial(),
+        '/home': (context) => PerfilScreen(),
       },
     );
   }
