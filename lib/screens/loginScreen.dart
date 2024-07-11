@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-body: Padding(
+      body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -76,8 +76,8 @@ body: Padding(
               ),
             ),
             const SizedBox(height: 20),
-           Column(
-              crossAxisAlignment: CrossAxisAlignment.start, 
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Ainda não é membro?',
@@ -90,17 +90,17 @@ body: Padding(
                   onPressed: () {
                     Navigator.pushNamed(context, '/signup');
                   },
-                    child: const Text(
-                      'Cadastre-se',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.orange,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  child: const Text(
+                    'Cadastre-se',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

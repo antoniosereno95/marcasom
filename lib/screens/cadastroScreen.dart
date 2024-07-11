@@ -13,19 +13,15 @@ class SignupScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              const SizedBox(height: 100),
+              SizedBox(height: 100),
               Center(
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'lib/assets/Logo-LoginCadastro.svg',
-                width: 240,
-                height: 40,
-                    ),
-                  ],
+                child: SvgPicture.asset(
+                  'lib/assets/Logo-LoginCadastro.svg',
+                  width: 240,
+                  height: 40,
                 ),
               ),
-              const SizedBox(height: 50),
+              SizedBox(height: 50),
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Nome',
@@ -37,7 +33,7 @@ class SignupScreen extends StatelessWidget {
                   fillColor: Colors.grey[200],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   hintText: 'E-mail',
@@ -49,7 +45,7 @@ class SignupScreen extends StatelessWidget {
                   fillColor: Colors.grey[200],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Senha',
@@ -62,7 +58,7 @@ class SignupScreen extends StatelessWidget {
                 ),
                 obscureText: true,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Confirme a Senha',
@@ -75,10 +71,9 @@ class SignupScreen extends StatelessWidget {
                 ),
                 obscureText: true,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Ação ao clicar no botão de cadastrar
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF9C27B0),
@@ -86,19 +81,20 @@ class SignupScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: Text(
                     'Cadastrar',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               Center(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Já se cadastrou?',
                       style: TextStyle(
                         fontSize: 16,
@@ -107,10 +103,9 @@ class SignupScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navegar para a página de login
                         Navigator.pushNamed(context, '/login');
                       },
-                      child: const Text(
+                      child: Text(
                         'Entrar',
                         style: TextStyle(
                           fontSize: 16,
@@ -122,68 +117,70 @@ class SignupScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
+                    TextSpan(
                       text: 'Ao se cadastrar, você aceita nossos ',
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     TextSpan(
                       text: 'Termos de Uso',
-                      style: const TextStyle(color: Colors.orange, fontSize: 14),
+                      style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Navegar para a página de Termos de Uso
+                          // Para ir para página de Termos de Uso
                         },
                     ),
-                    const TextSpan(
+                    TextSpan(
                       text: ' e nossa ',
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     TextSpan(
                       text: 'Política de Privacidade.',
-                      style: const TextStyle(color: Colors.orange, fontSize: 14),
+                      style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Navegar para a página de Política de Privacidade
+                          // Para ir para página de Política de Privacidade
                         },
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: 10),
+              Text(
                 'As informações coletadas pela Comuto Serviços de Tecnologia LTDA são processadas com o propósito de criar sua conta, administrar sua reserva, utilizar e melhorar nossos serviços e garantir a segurança de nossa plataforma.',
                 style: TextStyle(color: Colors.black, fontSize: 14),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
-                      text: 'Você possui direitos sobre seus dados pessoais e pode exercê-los entrando em contato com a MarcaSoM através do nosso ',
+                    TextSpan(
+                      text:
+                          'Você possui direitos sobre seus dados pessoais e pode exercê-los entrando em contato com a MarcaSoM através do nosso ',
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     TextSpan(
                       text: 'Formulário de contato.',
-                      style: const TextStyle(color: Colors.orange, fontSize: 14),
+                      style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Navegar para a página de Formulário de Contato
+                          // Para ir para página de Formulário de Contato
                         },
                     ),
-                    const TextSpan(
-                      text: ' Para saber mais sobre seus direitos e sobre como lidamos com seus dados pessoais, confira nossa ',
+                    TextSpan(
+                      text:
+                          ' Para saber mais sobre seus direitos e sobre como lidamos com seus dados pessoais, confira nossa ',
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     TextSpan(
                       text: 'Política de Privacidade.',
-                      style: const TextStyle(color: Colors.orange, fontSize: 14),
+                      style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Navegar para a página de Política de Privacidade
+                          // Para ir para página de Política de Privacidade
                         },
                     ),
                   ],
