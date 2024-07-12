@@ -14,7 +14,7 @@ class BarraDeNavegacao extends StatelessWidget {
         Navigator.pushReplacementNamed(context, '/feed');
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, '/calendario');
+        Navigator.pushReplacementNamed(context, '/minhasreservas');
         break;
       case 3:
         Navigator.pushReplacementNamed(context, '/perfil');

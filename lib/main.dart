@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/calendario.dart';
+import 'screens/minhasReservas.dart';
 import 'screens/feedArtistas.dart';
 import 'screens/loadingScreen.dart';
 import 'screens/loginScreen.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupScreen(),
         '/home': (context) => BuscaInicial(),
         '/perfil': (context) => PerfilScreen(),
-        '/calendario': (context) => Calendario(),
+        '/minhasreservas': (context) => MinhasReservas(),
         '/feed': (context) => FeedArtistas(),
       },
     );
