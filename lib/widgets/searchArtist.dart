@@ -35,7 +35,7 @@ class SearchArtist extends StatelessWidget {
           TextField(
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.calendar_today),
-              hintText: 'Hoje',
+              hintText: 'Data',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),

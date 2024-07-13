@@ -42,7 +42,7 @@ class BarraDeNavegacao extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_today),
-          label: 'Calendario',
+          label: 'Minhas Reservas',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
