@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:marcasom/screens/loginScreen.dart';
+import '../widgets/MarcasomAppBar.dart';
 import '../widgets/barraNavegacao.dart';
 
 class PerfilScreen extends StatefulWidget {
+  const PerfilScreen({super.key});
+
   @override
   _PerfilScreenState createState() => _PerfilScreenState();
 }
@@ -40,32 +42,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF9C27B0),
-        elevation: 0,
-        centerTitle: true,
-        title: const Text('Perfil do Usuário'),
-        leading: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                );
-              },
-            ),
-            const Center(
-              child: Text(
-                'LogOut',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: const MarcasomAppBar(title: 'Minhas Reservas'),
       backgroundColor: const Color(0xFFFAFAFA),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -76,9 +53,9 @@ class _PerfilScreenState extends State<PerfilScreen> {
               Center(
                 child: Column(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('lib/assets/images/UserIcon.svg'),
+                      backgroundImage: AssetImage('lib/assets/perfinIcon.svg'),
                     ),
                     SizedBox(height: 10),
                     Text(

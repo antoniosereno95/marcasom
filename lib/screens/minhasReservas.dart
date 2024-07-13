@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/MarcasomAppBar.dart';
 import '../widgets/barraNavegacao.dart';
-import 'loginScreen.dart';
 
 class MinhasReservas extends StatelessWidget {
   final List<Map<String, dynamic>> reservas = [
@@ -29,10 +29,43 @@ class MinhasReservas extends StatelessWidget {
     {
       'status': 'Confirmado',
       'tipoUsuario': 'Artista',
-      'nome': 'Aline e os Trevosos',
+      'nome': 'Jeito Moleque',
+      'generoMusical': 'Gênero Musical: Samba',
+      'local': 'Bar do Cão',
+      'data': '21/07/2024',
+      'hora': '22:30h',
+      'iconeStatus': Icons.check_circle,
+      'iconeUsuario': Icons.mic,
+    },
+    {
+      'status': 'Em analise',
+      'tipoUsuario': 'Artista',
+      'nome': 'Sliptknot',
+      'generoMusical': 'Gênero Musical: Hard Rock',
+      'local': 'Bar do Rock',
+      'data': '28/07/2024',
+      'hora': '23:30h',
+      'iconeStatus': Icons.check_circle,
+      'iconeUsuario': Icons.mic,
+    },
+    {
+      'status': 'Confirmado',
+      'tipoUsuario': 'Artista',
+      'nome': 'Sibá',
       'generoMusical': 'Gênero Musical: MPB',
-      'local': 'Bar do Seu Peu',
-      'data': '12/07/2024',
+      'local': 'Bar Dom Pedro',
+      'data': '19/07/2024',
+      'hora': '20:00h',
+      'iconeStatus': Icons.check_circle,
+      'iconeUsuario': Icons.mic,
+    },
+    {
+      'status': 'Em analise',
+      'tipoUsuario': 'Artista',
+      'nome': 'Alice in Chains',
+      'generoMusical': 'Gênero Musical: Rock',
+      'local': 'Bar caverna do Dragão',
+      'data': '4/07/2029',
       'hora': '21:30h',
       'iconeStatus': Icons.check_circle,
       'iconeUsuario': Icons.mic,
@@ -40,78 +73,22 @@ class MinhasReservas extends StatelessWidget {
     {
       'status': 'Confirmado',
       'tipoUsuario': 'Artista',
-      'nome': 'Aline e os Trevosos',
-      'generoMusical': 'Gênero Musical: MPB',
-      'local': 'Bar do Seu Peu',
-      'data': '12/07/2024',
-      'hora': '21:30h',
-      'iconeStatus': Icons.check_circle,
-      'iconeUsuario': Icons.mic,
-    },
-    {
-      'status': 'Confirmado',
-      'tipoUsuario': 'Artista',
-      'nome': 'Aline e os Trevosos',
-      'generoMusical': 'Gênero Musical: MPB',
-      'local': 'Bar do Seu Peu',
-      'data': '12/07/2024',
-      'hora': '21:30h',
-      'iconeStatus': Icons.check_circle,
-      'iconeUsuario': Icons.mic,
-    },
-    {
-      'status': 'Confirmado',
-      'tipoUsuario': 'Artista',
-      'nome': 'Aline e os Trevosos',
-      'generoMusical': 'Gênero Musical: MPB',
-      'local': 'Bar do Seu Peu',
-      'data': '12/07/2024',
-      'hora': '21:30h',
-      'iconeStatus': Icons.check_circle,
-      'iconeUsuario': Icons.mic,
-    },
-    {
-      'status': 'Confirmado',
-      'tipoUsuario': 'Artista',
-      'nome': 'Aline e os Trevosos',
-      'generoMusical': 'Gênero Musical: MPB',
-      'local': 'Bar do Seu Peu',
-      'data': '12/07/2024',
-      'hora': '21:30h',
+      'nome': 'Sabotagem',
+      'generoMusical': 'Gênero Musical: RAP',
+      'local': 'Arena da Eterna Lembrança',
+      'data': '12/07/1993',
+      'hora': '29:72h',
       'iconeStatus': Icons.check_circle,
       'iconeUsuario': Icons.mic,
     },
   ];
 
+  MinhasReservas({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF9C27B0),
-        elevation: 0,
-        centerTitle: true,
-        title: const Text('Minhas Reservas'),
-        leading: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                );
-              },
-            ),
-            const Center(
-              child: Text(
-                'LogOut',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: const MarcasomAppBar(title: 'Minhas Reservas'),
       body: ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemCount: reservas.length,
