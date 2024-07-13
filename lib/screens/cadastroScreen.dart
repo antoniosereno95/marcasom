@@ -110,6 +110,7 @@ class SignupScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  // Ação ao clicar no botão de cadastrar
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF9C27B0),
@@ -126,7 +127,8 @@ class SignupScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Center(
+              Align(
+                alignment: Alignment.centerLeft,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -166,6 +168,7 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
+                          // Ação ao clicar no texto Termos de Uso
                         },
                     ),
                     TextSpan(
@@ -177,6 +180,7 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
+                          // Ação ao clicar no texto Política de Privacidade
                         },
                     ),
                   ],
@@ -192,8 +196,7 @@ class SignupScreen extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text:
-                          'Você possui direitos sobre seus dados pessoais e pode exercê-los entrando em contato com a MarcaSoM através do nosso ',
+                      text: 'Você possui direitos sobre seus dados pessoais e pode exercê-los entrando em contato com a MarcaSoM através do nosso ',
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     TextSpan(
@@ -201,11 +204,11 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
+                          // Ação ao clicar no texto Formulário de contato
                         },
                     ),
                     TextSpan(
-                      text:
-                          ' Para saber mais sobre seus direitos e sobre como lidamos com seus dados pessoais, confira nossa ',
+                      text: ' Para saber mais sobre seus direitos e sobre como lidamos com seus dados pessoais, confira nossa ',
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     TextSpan(
@@ -213,6 +216,7 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.orange, fontSize: 14),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
+                          // Ação ao clicar no texto Política de Privacidade
                         },
                     ),
                   ],

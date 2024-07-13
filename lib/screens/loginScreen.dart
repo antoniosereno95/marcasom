@@ -76,30 +76,33 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Ainda não é membro?',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/signup');
-                  },
-                  child: const Text(
-                    'Cadastre-se',
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Ainda não é membro?',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.orange,
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
-                ),
-              ],
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/signup');
+                    },
+                    child: const Text(
+                      'Cadastre-se',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.orange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
