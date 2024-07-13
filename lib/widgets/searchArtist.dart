@@ -12,6 +12,15 @@ class SearchArtist extends StatelessWidget {
       ),
       child: Column(
         children: [
+          Text(
+            'Artistas locais a poucos cliques de você!',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(height: 150),
           TextField(
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.location_city),
