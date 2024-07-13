@@ -18,27 +18,13 @@ class BuscaInicial extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              icon: const Icon(Icons.cancel, color: Colors.white),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
-            ),
-            const Center(
-              child: Text(
-                'LogOut',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-
-                //ja tentei de tudo pra arrumar esse overflow do logout
-                //mas nada deu certo
-                //quem quiser tentar, ajuda ai
-                //negocio é que precisa do texto pq o botao é de logout
-                //ou no minimo tem que arrumar um icon mais adequado pra situação
-                //tipo um x com um circulo ou algo do tipo
-
-              ),
             ),
           ],
         ),
