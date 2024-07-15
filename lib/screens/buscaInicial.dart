@@ -1,24 +1,47 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/MarcasomAppBar.dart';
+import '../widgets/SearchArtist.dart';
 import '../widgets/barraNavegacao.dart';
-import '../widgets/searchArtist.dart';
 
 class BuscaInicial extends StatelessWidget {
-  const BuscaInicial({super.key});
+  const BuscaInicial({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MarcasomAppBar(title: 'Busca Inicial'),
-      backgroundColor: const Color(0xFFFAFAFA),
-      body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SearchArtist(),
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("lib/assets/marcasom 1.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20), 
+                const Text(
+                  'Artistas locais a poucos cliques de você!',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 150), 
+                 SearchArtist(),
+                 const SizedBox(height: 20)
+              ],
             ),
           ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0),
+        ),
+      ),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0), // Barra de navegação na parte inferior
     );
   }
 }
