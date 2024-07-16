@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:marcasom/screens/resumoDaReserva.dart';
-import '../widgets/MarcasomAppBar.dart';
-import '../widgets/barraNavegacao.dart';
+import 'package:marcasom/widgets/cardReservation.dart';
+import 'package:marcasom/widgets/reservasArquivadasButton.dart';
 
-class MinhasReservas extends StatelessWidget {
-  final List<Map<String, dynamic>> reservas = [
+class MinhasReservasScreen extends StatefulWidget {
+  @override
+  _MinhasReservasScreenState createState() => _MinhasReservasScreenState();
+}
+
+class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
+  List<Map<String, dynamic>> reservas = [
     {
       'status': 'Confirmado',
       'tipoUsuario': 'Artista',
@@ -49,8 +53,11 @@ class MinhasReservas extends StatelessWidget {
       'iconeStatus': Icons.check_circle,
       'iconeUsuario': Icons.mic,
     },
+  ];
+
+  List<Map<String, dynamic>> archivedReservations = [
     {
-      'status': 'Confirmado',
+      'status': 'Finalizado com sucesso',
       'tipoUsuario': 'Artista',
       'nome': 'Sibá',
       'generoMusical': 'Gênero Musical: MPB',
@@ -61,7 +68,7 @@ class MinhasReservas extends StatelessWidget {
       'iconeUsuario': Icons.mic,
     },
     {
-      'status': 'Em análise',
+      'status': 'Cancelado',
       'tipoUsuario': 'Artista',
       'nome': 'Alice in Chains',
       'generoMusical': 'Gênero Musical: Rock',
@@ -72,7 +79,7 @@ class MinhasReservas extends StatelessWidget {
       'iconeUsuario': Icons.mic,
     },
     {
-      'status': 'Confirmado',
+      'status': 'Finalizado com sucesso',
       'tipoUsuario': 'Artista',
       'nome': 'Sabotagem',
       'generoMusical': 'Gênero Musical: RAP',
@@ -84,101 +91,42 @@ class MinhasReservas extends StatelessWidget {
     },
   ];
 
-  MinhasReservas({super.key});
+  void _archiveReservation(Map<String, dynamic> reservation) {
+    setState(() {
+      reservas.remove(reservation);
+      archivedReservations.insert(0, reservation);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MarcasomAppBar(title: 'Minhas Reservas'),
-      body: ListView.builder(
+      appBar: AppBar(
+        title: Text('Minhas Reservas'),
+      ),
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
-        itemCount: reservas.length,
-        itemBuilder: (context, index) {
-          final reserva = reservas[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ResumoReservaScreen(reserva: reserva),
-                ),
-              );
-            },
-            child: Card(
-              margin: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          reserva['iconeStatus'],
-                          color: reserva['status'] == 'Confirmado' ? Colors.green : Colors.orange,
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          reserva['status'],
-                          style: TextStyle(
-                            color: reserva['status'] == 'Confirmado' ? Colors.green : Colors.orange,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Icon(
-                          reserva['iconeUsuario'],
-                          color: Colors.blue,
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          reserva['nome'],
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Text(reserva['tipoUsuario']),
-                    if (reserva.containsKey('generoMusical')) ...[
-                      SizedBox(height: 5),
-                      Text(reserva['generoMusical']),
-                    ],
-                    if (reserva.containsKey('local')) ...[
-                      SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Icon(Icons.location_on, color: Colors.orange),
-                          SizedBox(width: 5),
-                          Text(reserva['local']),
-                        ],
-                      ),
-                    ],
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Icon(Icons.calendar_today, color: Colors.orange),
-                        SizedBox(width: 5),
-                        Text(reserva['data']),
-                        SizedBox(width: 20),
-                        Icon(Icons.access_time, color: Colors.orange),
-                        SizedBox(width: 5),
-                        Text(reserva['hora']),
-                      ],
-                    ),
-                  ],
-                ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: reservas.length,
+                itemBuilder: (context, index) {
+                  final reserva = reservas[index];
+                  return Dismissible(
+                    key: Key(reserva.toString()),
+                    onDismissed: (direction) {
+                      _archiveReservation(reserva);
+                    },
+                    child: ReservationCard(reserva: reserva),
+                  );
+                },
               ),
             ),
-          );
-        },
+            ReservasArquivadasWidget(archivedReservations: archivedReservations),
+          ],
+        ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 2),
     );
   }
 }
