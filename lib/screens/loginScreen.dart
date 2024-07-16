@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 20),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -151,7 +151,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Função para submeter o formulário
   void submitForm() {
     if (_formKey.currentState!.validate()) {
       if (emailController.text == 'marcasom' && senhaController.text == 'marcasom') {
