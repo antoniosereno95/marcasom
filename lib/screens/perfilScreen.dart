@@ -118,6 +118,12 @@ class _PerfilScreenState extends State<PerfilScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: TextField(
                         controller: bioController,
+                        onSubmitted: (value) {
+                          setState(() {
+                            bioText = value;
+                            mostraBio = false;
+                          });
+                        },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Digite sua miniBiografia',
@@ -138,8 +144,22 @@ class _PerfilScreenState extends State<PerfilScreen> {
               if (bioText != null)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text('MiniBiografia: $bioText'),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('MiniBiografia: $bioText'),
+                      SizedBox(height: 10),
+                    ],
+                  ),
                 ),
+              SizedBox(height: 20),
+              Text(
+                'Preferências',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
@@ -168,6 +188,12 @@ class _PerfilScreenState extends State<PerfilScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: TextField(
                         controller: preferenciasController,
+                        onSubmitted: (value) {
+                          setState(() {
+                            preferenciasText = value;
+                            mostraPreferencias = false;
+                          });
+                        },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Digite suas preferências',
@@ -188,7 +214,13 @@ class _PerfilScreenState extends State<PerfilScreen> {
               if (preferenciasText != null)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text('Preferências: $preferenciasText'),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Preferências: $preferenciasText'),
+                      SizedBox(height: 10),
+                    ],
+                  ),
                 ),
               SizedBox(height: 20),
               Text(
@@ -226,6 +258,12 @@ class _PerfilScreenState extends State<PerfilScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: TextField(
                         controller: portifolioController,
+                        onSubmitted: (value) {
+                          setState(() {
+                            portifolioText = value;
+                            mostraPortifolio = false;
+                          });
+                        },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Digite o link do seu portfólio',
@@ -246,7 +284,13 @@ class _PerfilScreenState extends State<PerfilScreen> {
               if (portifolioText != null)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text('Portfólio: $portifolioText'),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Portfólio: $portifolioText'),
+                      SizedBox(height: 10),
+                    ],
+                  ),
                 ),
             ],
           ),

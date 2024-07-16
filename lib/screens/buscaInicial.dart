@@ -33,9 +33,7 @@ class BuscaInicial extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 150), 
                  SearchArtist(),
-                 const SizedBox(height: 20)
               ],
             ),
           ),
