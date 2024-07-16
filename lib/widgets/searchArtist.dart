@@ -49,7 +49,7 @@ class SearchArtist extends StatelessWidget {
               // Ação ao clicar no botão de procurar
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF9C27B0),
+              backgroundColor: const Color(0xFF9B59B6),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),

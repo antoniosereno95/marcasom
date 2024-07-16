@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/minhasReservas.dart';
+import 'package:marcasom/screens/minhasReservas.dart';
 import 'screens/feedArtistas.dart';
 import 'screens/loadingScreen.dart';
 import 'screens/loginScreen.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupScreen(),
         '/home': (context) => BuscaInicial(),
         '/perfil': (context) => PerfilScreen(),
-        '/minhasreservas': (context) => MinhasReservas(),
+        '/minhasreservas': (context) => MinhasReservasScreen(),
         '/feed': (context) => FeedArtistas(),
       },
     );

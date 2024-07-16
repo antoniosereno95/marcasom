@@ -39,7 +39,7 @@ class BuscaInicial extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0), // Barra de navegação na parte inferior
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0),
     );
   }
 }
