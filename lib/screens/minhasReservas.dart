@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marcasom/screens/resumoDaReserva.dart';
 import '../widgets/MarcasomAppBar.dart';
 import '../widgets/barraNavegacao.dart';
 
@@ -16,7 +17,7 @@ class MinhasReservas extends StatelessWidget {
       'iconeUsuario': Icons.mic,
     },
     {
-      'status': 'Em analise',
+      'status': 'Em análise',
       'tipoUsuario': 'Artista',
       'nome': 'DJ Sapeka',
       'generoMusical': 'Gênero Musical: Tudo e mais um Pouco',
@@ -38,7 +39,7 @@ class MinhasReservas extends StatelessWidget {
       'iconeUsuario': Icons.mic,
     },
     {
-      'status': 'Em analise',
+      'status': 'Em análise',
       'tipoUsuario': 'Artista',
       'nome': 'Sliptknot',
       'generoMusical': 'Gênero Musical: Hard Rock',
@@ -60,7 +61,7 @@ class MinhasReservas extends StatelessWidget {
       'iconeUsuario': Icons.mic,
     },
     {
-      'status': 'Em analise',
+      'status': 'Em análise',
       'tipoUsuario': 'Artista',
       'nome': 'Alice in Chains',
       'generoMusical': 'Gênero Musical: Rock',
@@ -94,75 +95,84 @@ class MinhasReservas extends StatelessWidget {
         itemCount: reservas.length,
         itemBuilder: (context, index) {
           final reserva = reservas[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        reserva['iconeStatus'],
-                        color: reserva['status'] == 'Confirmado' ? Colors.green : Colors.orange,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        reserva['status'],
-                        style: TextStyle(
-                          color: reserva['status'] == 'Confirmado' ? Colors.green : Colors.orange,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(
-                        reserva['iconeUsuario'],
-                        color: Colors.blue,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        reserva['nome'],
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  Text(reserva['tipoUsuario']),
-                  if (reserva.containsKey('generoMusical')) ...[
-                    SizedBox(height: 5),
-                    Text(reserva['generoMusical']),
-                  ],
-                  if (reserva.containsKey('local')) ...[
-                    SizedBox(height: 5),
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ResumoReservaScreen(reserva: reserva),
+                ),
+              );
+            },
+            child: Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Row(
                       children: [
-                        Icon(Icons.location_on, color: Colors.orange),
+                        Icon(
+                          reserva['iconeStatus'],
+                          color: reserva['status'] == 'Confirmado' ? Colors.green : Colors.orange,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          reserva['status'],
+                          style: TextStyle(
+                            color: reserva['status'] == 'Confirmado' ? Colors.green : Colors.orange,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Icon(
+                          reserva['iconeUsuario'],
+                          color: Colors.blue,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          reserva['nome'],
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Text(reserva['tipoUsuario']),
+                    if (reserva.containsKey('generoMusical')) ...[
+                      SizedBox(height: 5),
+                      Text(reserva['generoMusical']),
+                    ],
+                    if (reserva.containsKey('local')) ...[
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on, color: Colors.orange),
+                          SizedBox(width: 5),
+                          Text(reserva['local']),
+                        ],
+                      ),
+                    ],
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Icon(Icons.calendar_today, color: Colors.orange),
                         SizedBox(width: 5),
-                        Text(reserva['local']),
+                        Text(reserva['data']),
+                        SizedBox(width: 20),
+                        Icon(Icons.access_time, color: Colors.orange),
+                        SizedBox(width: 5),
+                        Text(reserva['hora']),
                       ],
                     ),
                   ],
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.calendar_today, color: Colors.orange),
-                      SizedBox(width: 5),
-                      Text(reserva['data']),
-                      SizedBox(width: 20),
-                      Icon(Icons.access_time, color: Colors.orange),
-                      SizedBox(width: 5),
-                      Text(reserva['hora']),
-                    ],
-                  ),
-                ],
+                ),
               ),
             ),
           );
