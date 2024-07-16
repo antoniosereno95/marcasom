@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 onPressed: submitForm,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF9C27B0),
+                  backgroundColor: const Color(0xFF9B59B6),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),

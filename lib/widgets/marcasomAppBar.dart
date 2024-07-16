@@ -9,7 +9,7 @@ class MarcasomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFF9C27B0),
+      backgroundColor: const Color(0xFF9B59B6),
       elevation: 0,
       centerTitle: true,
       title: Text(
