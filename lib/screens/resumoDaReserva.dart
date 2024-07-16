@@ -15,7 +15,6 @@ class ResumoReservaScreen extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        title: Text('Resumo da Reserva'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
