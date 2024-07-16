@@ -2,7 +2,23 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController sobrenomeController = TextEditingController();
+  final TextEditingController dataNascimentoController = TextEditingController();
+  final TextEditingController contatoController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+  final TextEditingController confirmarSenhaController = TextEditingController();
+
+  bool obscurePassword = true;
+  bool obscureConfirmPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +39,7 @@ class SignupScreen extends StatelessWidget {
               ),
               SizedBox(height: 50),
               TextField(
+                controller: nomeController,
                 decoration: InputDecoration(
                   hintText: 'Nome',
                   border: OutlineInputBorder(
@@ -31,46 +48,12 @@ class SignupScreen extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
+                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                decoration: InputDecoration(
-                  hintText: 'Sobrenome',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Data de Nascimento',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Contato(telefone)',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   hintText: 'E-mail',
                   border: OutlineInputBorder(
@@ -79,10 +62,12 @@ class SignupScreen extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
+                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 ),
               ),
               SizedBox(height: 20),
               TextField(
+                controller: senhaController,
                 decoration: InputDecoration(
                   hintText: 'Senha',
                   border: OutlineInputBorder(
@@ -91,11 +76,27 @@ class SignupScreen extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
+                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  suffixIcon: Padding(
+                    padding: EdgeInsets.only(right: 12.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscurePassword = !obscurePassword;
+                        });
+                      },
+                      child: Icon(
+                        obscurePassword ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
                 ),
-                obscureText: true,
+                obscureText: obscurePassword,
               ),
               SizedBox(height: 20),
               TextField(
+                controller: confirmarSenhaController,
                 decoration: InputDecoration(
                   hintText: 'Confirme a Senha',
                   border: OutlineInputBorder(
@@ -104,8 +105,23 @@ class SignupScreen extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
+                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  suffixIcon: Padding(
+                    padding: EdgeInsets.only(right: 12.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscureConfirmPassword = !obscureConfirmPassword;
+                        });
+                      },
+                      child: Icon(
+                        obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
                 ),
-                obscureText: true,
+                obscureText: obscureConfirmPassword,
               ),
               SizedBox(height: 20),
               ElevatedButton(
@@ -139,11 +155,12 @@ class SignupScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
+                    SizedBox(height: 4),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/login');
                       },
-                      child: Text(
+                      child: const Text(
                         'Entrar',
                         style: TextStyle(
                           fontSize: 16,

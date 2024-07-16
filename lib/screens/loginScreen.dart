@@ -13,6 +13,8 @@ class _LoginScreenState extends State<LoginScreen> {
   // GlobalKey para acessar o estado do formulário
   final _formKey = GlobalKey<FormState>();
 
+  bool obscurePassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 40,
                 ),
               ),
-              const SizedBox(height: 50),
+              SizedBox(height: 50),
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -43,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
+                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 ),
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) {
@@ -55,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextFormField(
                 controller: senhaController,
                 decoration: InputDecoration(
@@ -66,8 +69,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
+                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  suffixIcon: Padding(
+                    padding: EdgeInsets.only(right: 12.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          obscurePassword = !obscurePassword;
+                        });
+                      },
+                      child: Icon(
+                        obscurePassword ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
                 ),
-                obscureText: true,
+                obscureText: obscurePassword,
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (_) {
                   submitForm();
@@ -79,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: submitForm,
                 style: ElevatedButton.styleFrom(
@@ -96,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Column(
@@ -109,6 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                       ),
                     ),
+                    SizedBox(height: 4),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');
