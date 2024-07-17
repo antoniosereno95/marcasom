@@ -8,6 +8,9 @@ class PerfilScreen extends StatefulWidget {
   _PerfilScreenState createState() => _PerfilScreenState();
 }
 
+  //Lista de Icones: 
+  //Tres barras = density_medium_sharp
+  
 class _PerfilScreenState extends State<PerfilScreen> {
   
   final Map<String, String> userInfo = {
@@ -97,7 +100,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                 },
                 child: Row(
                   children: [
-                    Icon(Icons.add, color: Colors.orange),
+                    Icon(Icons.control_point, color: Colors.orange),
                     SizedBox(width: 10),
                     Text(
                       'Adicione miniBiografia',
@@ -167,7 +170,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                 },
                 child: Row(
                   children: [
-                    Icon(Icons.add, color: Colors.orange),
+                    Icon(Icons.control_point, color: Colors.orange),
                     SizedBox(width: 10),
                     Text(
                       'Adicione preferências',
@@ -237,7 +240,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                 },
                 child: Row(
                   children: [
-                    Icon(Icons.add, color: Colors.orange),
+                    Icon(Icons.control_point, color: Colors.orange),
                     SizedBox(width: 10),
                     Text(
                       'Adicione Link (Portfólio)',

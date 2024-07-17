@@ -18,7 +18,7 @@ class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
       'local': 'Bar do Seu Peu',
       'data': '12/07/2024',
       'hora': '21:30h',
-      'iconeStatus': Icons.check_circle,
+      'iconeStatus': Icons.check_circle_outline,
       'iconeUsuario': Icons.mic,
     },
     {
@@ -40,7 +40,7 @@ class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
       'local': 'Bar do Cão',
       'data': '21/07/2024',
       'hora': '22:30h',
-      'iconeStatus': Icons.check_circle,
+      'iconeStatus': Icons.check_circle_outline,
       'iconeUsuario': Icons.mic,
     },
     {
@@ -51,7 +51,7 @@ class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
       'local': 'Bar do Rock',
       'data': '28/07/2024',
       'hora': '23:30h',
-      'iconeStatus': Icons.check_circle,
+      'iconeStatus': Icons.check_circle_outline,
       'iconeUsuario': Icons.mic,
     },
   ];

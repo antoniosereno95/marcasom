@@ -16,6 +16,16 @@ class SearchArtist extends StatelessWidget {
           const SizedBox(height: 10),
           TextField(
             decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.location_on),
+              hintText: 'Cidade',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          TextField(
+            decoration: InputDecoration(
               prefixIcon: const Icon(Icons.music_note),
               hintText: 'Gênero Musical',
               border: OutlineInputBorder(

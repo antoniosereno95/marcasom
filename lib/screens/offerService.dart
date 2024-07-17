@@ -53,18 +53,19 @@ class _OfferServiceState extends State<OfferService> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 10),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SizedBox(height: 10),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/home'); 
+                Navigator.pushNamed(context, '/home');
               }, 
-              icon: Icon(Icons.cancel, color: Colors.purple),
+              icon: Icon(Icons.close, color: Colors.purple),
             ),
           ],
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 20),
         Text(
           'Em qual cidade deseja oferecer serviço?',
           style: TextStyle(
@@ -76,7 +77,7 @@ class _OfferServiceState extends State<OfferService> {
             color: Color(0xFF2C3E50),
           ),
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 20),
         TypeAheadField(
           textFieldConfiguration: TextFieldConfiguration(
             decoration: InputDecoration(
@@ -89,7 +90,7 @@ class _OfferServiceState extends State<OfferService> {
                 color: Color(0xFF2C3E50),
               ),
               filled: true,
-              fillColor: Color(0xFFF1F4F3),
+              fillColor: Colors.grey[200],
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide.none,
@@ -127,6 +128,7 @@ class _OfferServiceState extends State<OfferService> {
             });
           },
           icon: Icon(Icons.arrow_back, color: Colors.purple),
+          
         ),
         SizedBox(height: 16),
         Text(

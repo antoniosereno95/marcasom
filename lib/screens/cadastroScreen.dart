@@ -213,7 +213,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // Ação ao clicar no texto Termos de Uso
                           },
                       ),
                       TextSpan(
@@ -225,7 +224,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // Ação ao clicar no texto Política de Privacidade
                           },
                       ),
                     ],
@@ -249,7 +247,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // Ação ao clicar no texto Formulário de contato
                           },
                       ),
                       TextSpan(
@@ -261,7 +258,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // Ação ao clicar no texto Política de Privacidade
                           },
                       ),
                     ],
