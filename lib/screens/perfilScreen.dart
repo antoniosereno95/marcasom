@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/MarcasomAppBar.dart';
 import '../widgets/barraNavegacao.dart';
 
 class PerfilScreen extends StatefulWidget {
@@ -42,7 +41,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MarcasomAppBar(title: 'Minhas Reservas'),
       backgroundColor: const Color(0xFFFAFAFA),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -296,7 +294,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 3),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 3, onTap: (int index) {  },),
     );
   }
 }

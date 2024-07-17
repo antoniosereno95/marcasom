@@ -1,54 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:marcasom/screens/buscaInicial.dart';
+import 'package:marcasom/screens/offerService.dart';
+import 'package:marcasom/screens/minhasReservas.dart';
+import 'package:marcasom/screens/perfilScreen.dart';
+import 'package:page_transition/page_transition.dart';
 
 class BarraDeNavegacao extends StatelessWidget {
   final int selectedIndex;
 
-  BarraDeNavegacao({required this.selectedIndex});
+  const BarraDeNavegacao({required this.selectedIndex, required void Function(int index) onTap});
 
   void _onItemTapped(BuildContext context, int index) {
+    Widget page;
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, '/home');
+        page = const BuscaInicial();
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, '/feed');
+        page = const OfferService();
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, '/minhasreservas');
+        page = MinhasReservasScreen();
         break;
       case 3:
-        Navigator.pushReplacementNamed(context, '/perfil');
+        page = const PerfilScreen();
         break;
+      default:
+        return;
     }
+
+    Navigator.pushReplacement(
+      context,
+      PageTransition(
+        type: PageTransitionType.fade,
+        child: page,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Color(0xFF9C27B0),
-      selectedItemColor: Colors.yellow,
-      unselectedItemColor: Colors.white,
-      currentIndex: selectedIndex,
-      onTap: (index) => _onItemTapped(context, index),
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Busca',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.music_note),
-          label: 'Feed',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_today),
-          label: 'Minhas Reservas',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Perfil',
-        ),
-      ],
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      ),
+      child: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: const Color(0xFF9C27B0),
+        selectedItemColor: Colors.yellow,
+        unselectedItemColor: Colors.white,
+        currentIndex: selectedIndex,
+        onTap: (index) => _onItemTapped(context, index),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Buscar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.music_note),
+            label: 'Oferecer Serviço',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Minhas Reservas',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Meu Perfil',
+          ),
+        ],
+      ),
     );
   }
 }

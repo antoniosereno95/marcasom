@@ -19,27 +19,26 @@ class BuscaInicial extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 20), 
-                const Text(
-                  'Artistas locais a poucos cliques de você!',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              const Text(
+                'Artistas locais a poucos cliques de você!',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-                 SearchArtist(),
-              ],
-            ),
+              ),
+              const SizedBox(height: 20),
+              SearchArtist(),
+            ],
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0, onTap: (int index) {  },),
     );
   }
 }
