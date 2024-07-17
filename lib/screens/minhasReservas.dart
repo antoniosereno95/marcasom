@@ -128,7 +128,7 @@ class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 2),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 2, onTap: (int index) {  },),
     );
   }
 }

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import '../widgets/MarcasomAppBar.dart';
 import '../widgets/barraNavegacao.dart';
 
 class OfferService extends StatefulWidget {
@@ -14,20 +12,29 @@ class OfferService extends StatefulWidget {
 }
 
 class _OfferServiceState extends State<OfferService> {
-  int _currentStep = 1; // Controla a etapa atual
-
-  String selectedCity = ''; // Guarda a cidade selecionada pelo usuário
+  int _currentStep = 1; 
+  String selectedCity = ''; 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MarcasomAppBar(title: 'Oferecer Serviço'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 34.0),
-        child: _buildCurrentStep(), // Chama o método para construir a etapa atual
+        child: _buildCurrentStep(),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 1),
+      bottomNavigationBar: BarraDeNavegacao(
+        selectedIndex: 1,
+        onTap: (index) => _navigateToOfferService(index),
+      ),
     );
+  }
+
+  void _navigateToOfferService(int index) {
+    if (index == 1 && _currentStep != 1) {
+      setState(() {
+        _currentStep = 1; 
+      });
+    }
   }
 
   Widget _buildCurrentStep() {
@@ -38,7 +45,7 @@ class _OfferServiceState extends State<OfferService> {
     } else if (_currentStep == 3) {
       return _buildAvailableTimeStep();
     } else {
-      return Container(); // Retorno padrão caso não haja etapa definida
+      return Container();
     }
   }
 
@@ -46,6 +53,18 @@ class _OfferServiceState extends State<OfferService> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/home'); 
+              }, 
+              icon: Icon(Icons.cancel, color: Colors.purple),
+            ),
+          ],
+        ),
+        SizedBox(height: 16),
         Text(
           'Em qual cidade deseja oferecer serviço?',
           style: TextStyle(
@@ -57,7 +76,7 @@ class _OfferServiceState extends State<OfferService> {
             color: Color(0xFF2C3E50),
           ),
         ),
-        SizedBox(height: 32),
+        SizedBox(height: 16),
         TypeAheadField(
           textFieldConfiguration: TextFieldConfiguration(
             decoration: InputDecoration(
@@ -75,6 +94,7 @@ class _OfferServiceState extends State<OfferService> {
                 borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide.none,
               ),
+              contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
             ),
           ),
           suggestionsCallback: (pattern) async {
@@ -88,7 +108,7 @@ class _OfferServiceState extends State<OfferService> {
           onSuggestionSelected: (suggestion) {
             setState(() {
               selectedCity = suggestion;
-              _currentStep = 2; // Avança para a próxima etapa
+              _currentStep = 2; 
             });
           },
         ),
@@ -100,6 +120,15 @@ class _OfferServiceState extends State<OfferService> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        IconButton(
+          onPressed: () {
+            setState(() {
+              _currentStep = 1; 
+            });
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.purple),
+        ),
+        SizedBox(height: 16),
         Text(
           'Dias de serviço disponíveis?',
           style: TextStyle(
@@ -111,27 +140,18 @@ class _OfferServiceState extends State<OfferService> {
             color: Color(0xFF2C3E50),
           ),
         ),
-        // Implementar o calendário e lógica de seleção de dias aqui
-        // Exemplo: calendário com dias selecionáveis
         SizedBox(height: 32),
-        // Botão de navegação para a próxima etapa
-        FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _currentStep = 3; // Avança para a próxima etapa
-            });
-          },
-          backgroundColor: Colors.purple,
-          child: Icon(Icons.arrow_forward, color: Colors.white),
-        ),
-        // Botão para voltar para a etapa anterior
-        IconButton(
-          onPressed: () {
-            setState(() {
-              _currentStep = 1; // Volta para a etapa anterior
-            });
-          },
-          icon: Icon(Icons.arrow_back, color: Colors.purple),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+              setState(() {
+                _currentStep = 3; 
+              });
+            },
+            backgroundColor: Colors.purple,
+            label: Icon(Icons.arrow_forward, color: Colors.white),
+          ),
         ),
       ],
     );
@@ -141,8 +161,17 @@ class _OfferServiceState extends State<OfferService> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        IconButton(
+          onPressed: () {
+            setState(() {
+              _currentStep = 2; 
+            });
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.purple),
+        ),
+        SizedBox(height: 16),
         Text(
-          'Horário disponível para "$selectedCity"',
+          'Horário disponível para tal dia',
           style: TextStyle(
             fontFamily: 'Roboto',
             fontStyle: FontStyle.normal,
@@ -152,25 +181,15 @@ class _OfferServiceState extends State<OfferService> {
             color: Color(0xFF2C3E50),
           ),
         ),
-        // Implementar interface para seleção de horários aqui
-        // Exemplo: grade de horários disponíveis
         SizedBox(height: 32),
-        // Botão de navegação para a próxima etapa
-        FloatingActionButton(
-          onPressed: () {
-            // Implementar ação para avançar para a próxima etapa ou finalizar
-          },
-          backgroundColor: Colors.purple,
-          child: Icon(Icons.arrow_forward, color: Colors.white),
-        ),
-        // Botão para voltar para a etapa anterior
-        IconButton(
-          onPressed: () {
-            setState(() {
-              _currentStep = 2; // Volta para a etapa anterior
-            });
-          },
-          icon: Icon(Icons.arrow_back, color: Colors.purple),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+            },
+            backgroundColor: Colors.purple,
+            label: Icon(Icons.arrow_forward, color: Colors.white),
+          ),
         ),
       ],
     );

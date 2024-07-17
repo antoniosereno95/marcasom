@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/MarcasomAppBar.dart';
 import '../widgets/barraNavegacao.dart';
 
 class PerfilScreen extends StatefulWidget {
@@ -295,7 +294,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 3),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 3, onTap: (int index) {  },),
     );
   }
 }
