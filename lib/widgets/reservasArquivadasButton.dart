@@ -31,20 +31,10 @@ class ReservasArquivadasWidget extends StatelessWidget {
             fontFamily: 'Roboto',
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
-            fontSize: 22,
+            fontSize: 18,
             height: 1.18, // line height as a multiplier of the font size
             color: Color(0xFFE67E22),
           ),
-        ),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 4,
-              spreadRadius: 1,
-              offset: Offset(0, 2),
-            ),
-          ],
         ),
       ),
     );
