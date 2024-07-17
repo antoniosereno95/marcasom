@@ -5,6 +5,8 @@ class PerfilArtistaScreen extends StatelessWidget {
 
   const PerfilArtistaScreen({super.key, required this.artista});
 
+//icone de  musica para compartilhar: music_note_2
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

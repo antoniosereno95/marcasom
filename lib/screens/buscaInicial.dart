@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import '../widgets/MarcasomAppBar.dart';
 import '../widgets/SearchArtist.dart';
 import '../widgets/barraNavegacao.dart';
 
 class BuscaInicial extends StatelessWidget {
   const BuscaInicial({Key? key}) : super(key: key);
 
+//Icone seta do filtro: arrow_back_ios
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color(0xFFFAFAFA),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
