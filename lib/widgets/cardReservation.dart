@@ -10,7 +10,7 @@ class ReservationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget statusWidget;
-    bool isClickable = true; // Variável para controlar a clicabilidade do card
+    bool isClickable = true;
 
     if (reserva['status'] == 'Cancelado') {
       statusWidget = Row(
@@ -53,7 +53,7 @@ class ReservationCard extends StatelessWidget {
     }
 
     return GestureDetector(
-      onTap: isClickable // Verifica se o card é clicável
+      onTap: isClickable 
           ? () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -61,7 +61,7 @@ class ReservationCard extends StatelessWidget {
                 ),
               );
             }
-          : null, // Se não for clicável, define como null para desativar o onTap
+          : null,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(

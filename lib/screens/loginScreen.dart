@@ -10,7 +10,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
 
-  // GlobalKey para acessar o estado do formulário
   final _formKey = GlobalKey<FormState>();
 
   bool obscurePassword = true;
@@ -22,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Form(
-          key: _formKey, // Associando a chave ao formulário
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
