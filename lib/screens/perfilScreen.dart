@@ -42,7 +42,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MarcasomAppBar(title: 'Minhas Reservas'),
       backgroundColor: const Color(0xFFFAFAFA),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
