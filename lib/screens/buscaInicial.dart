@@ -9,7 +9,6 @@ class BuscaInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MarcasomAppBar(title: 'Busca Inicial'),
       backgroundColor: Colors.transparent,
       body: Container(
         decoration: const BoxDecoration(
