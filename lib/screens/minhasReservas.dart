@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marcasom/widgets/barraNavegacao.dart';
 import 'package:marcasom/widgets/cardReservation.dart';
 import 'package:marcasom/widgets/reservasArquivadasButton.dart';
 
@@ -127,6 +128,7 @@ class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 2),
     );
   }
 }
