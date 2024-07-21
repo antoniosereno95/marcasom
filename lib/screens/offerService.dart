@@ -218,16 +218,7 @@ class _OfferServiceState extends State<OfferService> {
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(
-        selectedIndex: 1,
-        onTap: (index) {
-          if (index == 1) {
-            // Mantém a seleção na página atual
-          } else {
-            Navigator.pushNamed(context, '/otherPage'); // Altere '/otherPage' para a rota desejada
-          }
-        },
-      ),
+      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 1, onTap: (int index) {  },),
     );
   }
 }
