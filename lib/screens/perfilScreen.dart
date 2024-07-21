@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/barraNavegacao.dart';
+import 'package:marcasom/screens/loginScreen.dart';
+import '../widgets/barraNavegacao.dart'; // Certifique-se de ter a tela de login importada
 
 class PerfilScreen extends StatefulWidget {
   const PerfilScreen({super.key});
@@ -8,11 +9,7 @@ class PerfilScreen extends StatefulWidget {
   _PerfilScreenState createState() => _PerfilScreenState();
 }
 
-  //Lista de Icones: 
-  //Tres barras = density_medium_sharp
-  
 class _PerfilScreenState extends State<PerfilScreen> {
-  
   final Map<String, String> userInfo = {
     'nome': 'Antonio',
     'sobrenome': 'Sereno',
@@ -45,6 +42,45 @@ class _PerfilScreenState extends State<PerfilScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: const Color(0xFF9C27B0),
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.edit),
+              title: Text('Editar Informações'),
+              onTap: () {
+                // Não foi desenvolvida a logica de edição de valores.
+              },
+            ),
+          ],
+        ),
+      ),
+      appBar: AppBar(
+        title: Text('Meu Perfil'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
