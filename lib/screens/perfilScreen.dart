@@ -59,6 +59,13 @@ class _PerfilScreenState extends State<PerfilScreen> {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.edit),
+              title: Text('Editar Informações'),
+              onTap: () {
+                // Não foi desenvolvida a logica de edição de valores.
+              },
+            ),
+             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Logout'),
               onTap: () {
@@ -66,13 +73,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
                   context,
                   MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.edit),
-              title: Text('Editar Informações'),
-              onTap: () {
-                // Não foi desenvolvida a logica de edição de valores.
               },
             ),
           ],

@@ -5,8 +5,6 @@ import '../widgets/barraNavegacao.dart';
 class BuscaInicial extends StatelessWidget {
   const BuscaInicial({Key? key}) : super(key: key);
 
-//Icone seta do filtro: arrow_back_ios
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +31,17 @@ class BuscaInicial extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              SearchArtist(),
+              Center(
+                child: SearchArtist(),
+              ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 0, onTap: (int index) {  },),
+      bottomNavigationBar: BarraDeNavegacao(
+        selectedIndex: 0,
+        onTap: (int index) {},
+      ),
     );
   }
 }
