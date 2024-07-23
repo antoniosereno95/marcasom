@@ -105,9 +105,6 @@ class _SearchArtistState extends State<SearchArtist> {
                 border: InputBorder.none,
               ),
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Por favor, insira o gênero musical.';
-                }
                 return null;
               },
             ),
@@ -143,7 +140,7 @@ class _SearchArtistState extends State<SearchArtist> {
                   if (_formKey.currentState!.validate()) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ListagemArtista()),
+                      MaterialPageRoute(builder: (context) => ListagemArtista(local: _cityController.text, data: _dateController.text, genero: _genreController.text,)),
                     );
                   }
                 },
