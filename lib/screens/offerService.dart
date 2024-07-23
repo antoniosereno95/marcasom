@@ -25,6 +25,7 @@ class _OfferServiceState extends State<OfferService> {
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _stateController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -63,10 +64,42 @@ class _OfferServiceState extends State<OfferService> {
       'Canadá',
       'França',
       'Alemanha',
-      'Japão',
-      // Adicione outros países conforme necessário
+      'Japão'
     ];
     return countries.where((country) => country.toLowerCase().contains(pattern.toLowerCase())).toList();
+  }
+
+  Future<List<String>> _getStates(String pattern) async {
+    List<String> states = [
+      'Acre existe mesmo?',
+      'Alagoas',
+      'Amapá',
+      'Amazonas',
+      'Bahia',
+      'Ceará',
+      'Distrito Federal',
+      'Espírito Santo',
+      'Goiás',
+      'Maranhão',
+      'Mato Grosso',
+      'Mato Grosso do Sul',
+      'Minas Gerais',
+      'Pará',
+      'Paraíba',
+      'Paraná',
+      'Pernambuco',
+      'Piauí',
+      'Rio de Janeiro',
+      'Rio Grande do Norte',
+      'Rio Grande do Sul',
+      'Rondônia',
+      'Roraima',
+      'Santa Catarina',
+      'São Paulo',
+      'Sergipe',
+      'Tocantins'
+    ];
+    return states.where((state) => state.toLowerCase().contains(pattern.toLowerCase())).toList();
   }
 
   @override
@@ -178,17 +211,31 @@ class _OfferServiceState extends State<OfferService> {
                 },
               ),
               SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Estado',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  controller: _stateController,
+                  decoration: InputDecoration(
+                    hintText: 'Estado',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
+                suggestionsCallback: (pattern) async {
+                  return await _getStates(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _stateController.text = suggestion;
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira o estado';
