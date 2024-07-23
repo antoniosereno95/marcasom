@@ -3,6 +3,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import '../widgets/barraNavegacao.dart';
 
 class OfferService extends StatefulWidget {
@@ -26,6 +27,7 @@ class _OfferServiceState extends State<OfferService> {
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
   final TextEditingController _stateController = TextEditingController();
+  final MoneyMaskedTextController _feeController = MoneyMaskedTextController(leftSymbol: 'R\$ ', decimalSeparator: ',');
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -311,6 +313,7 @@ class _OfferServiceState extends State<OfferService> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                controller: _feeController,
                 decoration: InputDecoration(
                   hintText: 'Valor da apresentação',
                   filled: true,
@@ -328,7 +331,7 @@ class _OfferServiceState extends State<OfferService> {
                   return null;
                 },
                 onSaved: (value) {
-                  performanceFee = value!;
+                  performanceFee = _feeController.text;
                 },
               ),
               SizedBox(height: 32),
@@ -338,7 +341,6 @@ class _OfferServiceState extends State<OfferService> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      // Process the form data
                     }
                   },
                   backgroundColor: Colors.purple,
