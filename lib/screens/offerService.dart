@@ -127,14 +127,18 @@ class _OfferServiceState extends State<OfferService> {
                 },
               ),
               SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Cidade de origem',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  controller: _cityController,
+                  decoration: InputDecoration(
+                    hintText: 'Cidade de origem',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   ),
                 ),
                 suggestionsCallback: (pattern) async {
@@ -204,9 +208,9 @@ class _OfferServiceState extends State<OfferService> {
               ),
               SizedBox(height: 20),
               TextFormField(
-                  controller: _dateController,
-                  decoration: InputDecoration(
+                controller: _dateController,
                 readOnly: true,
+                decoration: InputDecoration(
                   hintText: 'Datas',
                   filled: true,
                   fillColor: Colors.grey[200],
