@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/barraNavegacao.dart';
 
 class OfferService extends StatefulWidget {
-  const OfferService({Key? key}) : super(key: key);
+  const OfferService({super.key});
 
   @override
   _OfferServiceState createState() => _OfferServiceState();
@@ -22,9 +22,9 @@ class _OfferServiceState extends State<OfferService> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Oferecer Serviço'),
+        title: const Text('Oferecer Serviço'),
         leading: IconButton(
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
           onPressed: () {
             Navigator.pushNamed(context, '/home');
           },
@@ -36,8 +36,8 @@ class _OfferServiceState extends State<OfferService> {
           key: _formKey,
           child: ListView(
             children: [
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Informações do Artista',
                 style: TextStyle(
                   fontFamily: 'Roboto',
@@ -46,7 +46,7 @@ class _OfferServiceState extends State<OfferService> {
                   color: Color(0xFF2C3E50),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Nome do artista',
@@ -56,7 +56,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -68,7 +68,7 @@ class _OfferServiceState extends State<OfferService> {
                   artistName = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Gênero musical',
@@ -78,7 +78,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -90,7 +90,7 @@ class _OfferServiceState extends State<OfferService> {
                   musicGenre = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Cidade de origem',
@@ -100,7 +100,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -112,7 +112,7 @@ class _OfferServiceState extends State<OfferService> {
                   selectedCity = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Estado',
@@ -122,7 +122,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -134,7 +134,7 @@ class _OfferServiceState extends State<OfferService> {
                   selectedState = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'País',
@@ -144,7 +144,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -156,7 +156,7 @@ class _OfferServiceState extends State<OfferService> {
                   selectedCountry = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Datas disponíveis',
@@ -166,7 +166,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -178,7 +178,7 @@ class _OfferServiceState extends State<OfferService> {
                   availableDates = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Valor da apresentação',
@@ -188,7 +188,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -200,7 +200,7 @@ class _OfferServiceState extends State<OfferService> {
                   performanceFee = value!;
                 },
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               Align(
                 alignment: Alignment.bottomRight,
                 child: FloatingActionButton.extended(
@@ -211,7 +211,7 @@ class _OfferServiceState extends State<OfferService> {
                     }
                   },
                   backgroundColor: Colors.purple,
-                  label: Icon(Icons.check, color: Colors.white),
+                  label: const Icon(Icons.check, color: Colors.white),
                 ),
               ),
             ],

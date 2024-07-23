@@ -3,12 +3,12 @@ import '../widgets/SearchArtist.dart';
 import '../widgets/barraNavegacao.dart';
 
 class BuscaInicial extends StatelessWidget {
-  const BuscaInicial({Key? key}) : super(key: key);
+  const BuscaInicial({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAFAFA),
+      backgroundColor: const Color(0xFFFAFAFA),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -16,13 +16,13 @@ class BuscaInicial extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+        child: const SingleChildScrollView(
+          padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 'Artistas locais a poucos cliques de você!',
                 style: TextStyle(
                   fontSize: 24,
@@ -30,7 +30,7 @@ class BuscaInicial extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               Center(
                 child: SearchArtist(),
               ),

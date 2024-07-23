@@ -8,7 +8,7 @@ import 'package:page_transition/page_transition.dart';
 class BarraDeNavegacao extends StatelessWidget {
   final int selectedIndex;
 
-  const BarraDeNavegacao({required this.selectedIndex, required void Function(int index) onTap});
+  const BarraDeNavegacao({super.key, required this.selectedIndex, required void Function(int index) onTap});
 
   void _onItemTapped(BuildContext context, int index) {
     Widget page;
@@ -20,7 +20,7 @@ class BarraDeNavegacao extends StatelessWidget {
         page = const OfferService();
         break;
       case 2:
-        page = MinhasReservasScreen();
+        page = const MinhasReservasScreen();
         break;
       case 3:
         page = const PerfilScreen();

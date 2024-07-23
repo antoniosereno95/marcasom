@@ -4,13 +4,13 @@ import 'package:marcasom/widgets/cardReservation.dart';
 class ReservasArquivadasScreen extends StatelessWidget {
   final List<Map<String, dynamic>> archivedReservations;
 
-  ReservasArquivadasScreen({required this.archivedReservations});
+  const ReservasArquivadasScreen({super.key, required this.archivedReservations});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reservas Arquivadas'),
+        title: const Text('Reservas Arquivadas'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

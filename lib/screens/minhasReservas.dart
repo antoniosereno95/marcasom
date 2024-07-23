@@ -4,6 +4,8 @@ import 'package:marcasom/widgets/cardReservation.dart';
 import 'package:marcasom/widgets/reservasArquivadasButton.dart';
 
 class MinhasReservasScreen extends StatefulWidget {
+  const MinhasReservasScreen({super.key});
+
   @override
   _MinhasReservasScreenState createState() => _MinhasReservasScreenState();
 }
@@ -103,7 +105,7 @@ class _MinhasReservasScreenState extends State<MinhasReservasScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Minhas Reservas'),
+        title: const Text('Minhas Reservas'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import '../screens/listagemArtista.dart';
 
 class SearchArtist extends StatefulWidget {
+  const SearchArtist({super.key});
+
   @override
   _SearchArtistState createState() => _SearchArtistState();
 }
@@ -62,8 +64,8 @@ class _SearchArtistState extends State<SearchArtist> {
             TypeAheadFormField(
               textFieldConfiguration: TextFieldConfiguration(
                 controller: _cityController,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.location_on),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.location_on),
                   hintText: 'Cidade',
                   border: InputBorder.none,
                 ),
@@ -97,8 +99,8 @@ class _SearchArtistState extends State<SearchArtist> {
             const SizedBox(height: 5),
             TextFormField(
               controller: _genreController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.music_note),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.music_note),
                 hintText: 'Gênero Musical',
                 border: InputBorder.none,
               ),
@@ -119,8 +121,8 @@ class _SearchArtistState extends State<SearchArtist> {
             TextFormField(
               controller: _dateController,
               readOnly: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.calendar_today),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.calendar_today),
                 hintText: 'Data',
                 border: InputBorder.none,
               ),
@@ -141,7 +143,7 @@ class _SearchArtistState extends State<SearchArtist> {
                   if (_formKey.currentState!.validate()) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ListagemArtista()),
+                      MaterialPageRoute(builder: (context) => const ListagemArtista()),
                     );
                   }
                 },

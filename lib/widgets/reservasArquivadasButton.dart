@@ -1,11 +1,10 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:marcasom/screens/ReservasArquivadasScreen.dart';
 
 class ReservasArquivadasWidget extends StatelessWidget {
   final List<Map<String, dynamic>> archivedReservations;
 
-  const ReservasArquivadasWidget({required this.archivedReservations});
+  const ReservasArquivadasWidget({super.key, required this.archivedReservations});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class ReservasArquivadasWidget extends StatelessWidget {
         height: 27,
         margin: const EdgeInsets.only(top: 20),
         alignment: Alignment.center,
-        child: Text(
+        child: const Text(
           'Reservas Arquivadas',
           style: TextStyle(
             fontFamily: 'Roboto',

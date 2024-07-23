@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marcasom/widgets/filtroArtista.dart';
 
 class ListagemArtista extends StatelessWidget {
-  const ListagemArtista({Key? key}) : super(key: key);
+  const ListagemArtista({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class ListagemArtista extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => const Filtros()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       'Filtros',
                       style: TextStyle(
                         fontSize: 18,
@@ -52,7 +52,7 @@ class ListagemArtista extends StatelessWidget {
           ),
           Expanded(
             child: ListView(
-              children: [
+              children: const [
                 // Your list of artists here
               ],
             ),
