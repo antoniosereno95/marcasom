@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:intl/intl.dart';
 import '../widgets/barraNavegacao.dart';
 
@@ -20,6 +23,7 @@ class _OfferServiceState extends State<OfferService> {
   String performanceFee = '';
 
   final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -33,6 +37,20 @@ class _OfferServiceState extends State<OfferService> {
       setState(() {
         _dateController.text = DateFormat('dd/MM/yyyy', 'pt_BR').format(picked);
       });
+    }
+  }
+
+  Future<List<String>> _getCities(String pattern) async {
+    final response = await http.get(
+      Uri.parse('https://servicodados.ibge.gov.br/api/v1/localidades/municipios'),
+    );
+
+    if (response.statusCode == 200) {
+      List data = json.decode(response.body);
+      List<String> cities = data.map((city) => city['nome'] as String).toList();
+      return cities.where((city) => city.toLowerCase().contains(pattern.toLowerCase())).toList();
+    } else {
+      throw Exception('Erro ao carregar as cidades');
     }
   }
 
@@ -118,8 +136,18 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
+                suggestionsCallback: (pattern) async {
+                  return await _getCities(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _cityController.text = suggestion;
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira a cidade de origem';
@@ -178,6 +206,7 @@ class _OfferServiceState extends State<OfferService> {
               TextFormField(
                   controller: _dateController,
                   decoration: InputDecoration(
+                readOnly: true,
                   hintText: 'Datas',
                   filled: true,
                   fillColor: Colors.grey[200],
