@@ -24,6 +24,7 @@ class _OfferServiceState extends State<OfferService> {
 
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -52,6 +53,20 @@ class _OfferServiceState extends State<OfferService> {
     } else {
       throw Exception('Erro ao carregar as cidades');
     }
+  }
+
+  Future<List<String>> _getCountries(String pattern) async {
+    List<String> countries = [
+      'Brasil',
+      'Estados Unidos',
+      'Argentina',
+      'Canadá',
+      'França',
+      'Alemanha',
+      'Japão',
+      // Adicione outros países conforme necessário
+    ];
+    return countries.where((country) => country.toLowerCase().contains(pattern.toLowerCase())).toList();
   }
 
   @override
@@ -129,6 +144,64 @@ class _OfferServiceState extends State<OfferService> {
               SizedBox(height: 20),
               TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
+                  controller: _countryController,
+                  decoration: InputDecoration(
+                    hintText: 'País',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  ),
+                ),
+                suggestionsCallback: (pattern) async {
+                  return await _getCountries(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _countryController.text = suggestion;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira o país';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  selectedCountry = value!;
+                },
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Estado',
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira o estado';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  selectedState = value!;
+                },
+              ),
+              SizedBox(height: 20),
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
                   controller: _cityController,
                   decoration: InputDecoration(
                     hintText: 'Cidade de origem',
@@ -164,50 +237,6 @@ class _OfferServiceState extends State<OfferService> {
               ),
               SizedBox(height: 20),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Estado',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o estado';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  selectedState = value!;
-                },
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'País',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o país';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  selectedCountry = value!;
-                },
-              ),
-              SizedBox(height: 20),
-              TextFormField(
                 controller: _dateController,
                 readOnly: true,
                 decoration: InputDecoration(
@@ -219,8 +248,9 @@ class _OfferServiceState extends State<OfferService> {
                     borderSide: BorderSide.none,
                   ),
                   contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                ),onTap: () {
-                _selectDate(context);
+                ),
+                onTap: () {
+                  _selectDate(context);
                 },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -272,7 +302,10 @@ class _OfferServiceState extends State<OfferService> {
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 1, onTap: (int index) {  },),
+      bottomNavigationBar: BarraDeNavegacao(
+        selectedIndex: 1,
+        onTap: (int index) {},
+      ),
     );
   }
 }
