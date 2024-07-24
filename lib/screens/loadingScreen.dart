@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:async';
 
 class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({super.key});
+
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
@@ -11,7 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, '/login');
     });
   }
@@ -19,13 +21,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF9B59B6),
+      backgroundColor: const Color(0xFF9B59B6),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              'lib/assets/Logo-Tela de Loading.svg',
+              'assets/Logo-Tela de Loading.svg',
               width: 200,
               height: 220,
             ),

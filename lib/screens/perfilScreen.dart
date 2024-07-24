@@ -46,9 +46,9 @@ class _PerfilScreenState extends State<PerfilScreen> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
-                color: const Color(0xFF9C27B0),
+                color: Color(0xFF9C27B0),
               ),
               child: Text(
                 'Menu',
@@ -59,19 +59,19 @@ class _PerfilScreenState extends State<PerfilScreen> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.edit),
-              title: Text('Editar Informações'),
+              leading: const Icon(Icons.edit),
+              title: const Text('Editar Informações'),
               onTap: () {
                 // Não foi desenvolvida a logica de edição de valores.
               },
             ),
              ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
               },
             ),
@@ -79,7 +79,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
         ),
       ),
       appBar: AppBar(
-        title: Text('Meu Perfil'),
+        title: const Text('Meu Perfil'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -92,12 +92,12 @@ class _PerfilScreenState extends State<PerfilScreen> {
                   children: [
                     const CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('lib/assets/perfinIcon.svg'),
+                      backgroundImage: AssetImage('assets/PerfilIcon.png'),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       userInfo['nome']!,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -105,36 +105,36 @@ class _PerfilScreenState extends State<PerfilScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Dados Pessoais',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text('Nome: ${userInfo['nome']}'),
               Text('Sobrenome: ${userInfo['sobrenome']}'),
               Text('Data de nascimento: ${userInfo['dataNascimento']}'),
               Text('Contato: ${userInfo['contato']}'),
               Text('Endereço de e-mail: ${userInfo['email']}'),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Sobre você',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   setState(() {
                     mostraBio = !mostraBio;
                   });
                 },
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(Icons.control_point, color: Colors.orange),
                     SizedBox(width: 10),
@@ -161,7 +161,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                             mostraBio = false;
                           });
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Digite sua miniBiografia',
                         ),
@@ -174,7 +174,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                           mostraBio = false;
                         });
                       },
-                      child: Text('Salvar'),
+                      child: const Text('Salvar'),
                     ),
                   ],
                 ),
@@ -185,26 +185,26 @@ class _PerfilScreenState extends State<PerfilScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('MiniBiografia: $bioText'),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Preferências',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   setState(() {
                     mostraPreferencias = !mostraPreferencias;
                   });
                 },
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(Icons.control_point, color: Colors.orange),
                     SizedBox(width: 10),
@@ -231,7 +231,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                             mostraPreferencias = false;
                           });
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Digite suas preferências',
                         ),
@@ -244,7 +244,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                           mostraPreferencias = false;
                         });
                       },
-                      child: Text('Salvar'),
+                      child: const Text('Salvar'),
                     ),
                   ],
                 ),
@@ -255,26 +255,26 @@ class _PerfilScreenState extends State<PerfilScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Preferências: $preferenciasText'),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Portfólio',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   setState(() {
                     mostraPortifolio = !mostraPortifolio;
                   });
                 },
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(Icons.control_point, color: Colors.orange),
                     SizedBox(width: 10),
@@ -301,7 +301,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                             mostraPortifolio = false;
                           });
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Digite o link do seu portfólio',
                         ),
@@ -314,7 +314,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                           mostraPortifolio = false;
                         });
                       },
-                      child: Text('Salvar'),
+                      child: const Text('Salvar'),
                     ),
                   ],
                 ),
@@ -325,7 +325,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Portfólio: $portifolioText'),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),

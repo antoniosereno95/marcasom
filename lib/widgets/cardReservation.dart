@@ -4,7 +4,7 @@ import 'package:marcasom/screens/resumoDaReserva.dart';
 class ReservationCard extends StatelessWidget {
   final Map<String, dynamic> reserva;
 
-  ReservationCard({required this.reserva});
+  const ReservationCard({super.key, required this.reserva});
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +12,13 @@ class ReservationCard extends StatelessWidget {
     bool isClickable = true;
 
     if (reserva['status'] == 'Cancelado') {
-      statusWidget = Row(
+      statusWidget = const Row(
         children: [
           Icon(
             Icons.block,
             color: Color(0xFFA0A0A0),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10),
           Text(
             "Reserva Cancelada",
             style: TextStyle(
@@ -30,7 +30,7 @@ class ReservationCard extends StatelessWidget {
       );
       isClickable = false; 
     } else if (reserva['status'] == 'Finalizado com sucesso') {
-      statusWidget = SizedBox.shrink();
+      statusWidget = const SizedBox.shrink();
       isClickable = false;
     } else {
       statusWidget = Row(
@@ -71,7 +71,7 @@ class ReservationCard extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -105,8 +105,8 @@ class ReservationCard extends StatelessWidget {
                 const SizedBox(height: 5),
                 Row(
                   children: [
-                    Icon(Icons.location_on, color: Colors.orange),
-                    SizedBox(width: 5),
+                    const Icon(Icons.location_on, color: Colors.orange),
+                    const SizedBox(width: 5),
                     Text(reserva['local']),
                   ],
                 ),
@@ -114,12 +114,12 @@ class ReservationCard extends StatelessWidget {
               const SizedBox(height: 10),
               Row(
                 children: [
-                  Icon(Icons.calendar_today, color: Colors.orange),
-                  SizedBox(width: 5),
+                  const Icon(Icons.calendar_today, color: Colors.orange),
+                  const SizedBox(width: 5),
                   Text(reserva['data']),
-                  SizedBox(width: 20),
-                  Icon(Icons.access_time, color: Colors.orange),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 20),
+                  const Icon(Icons.access_time, color: Colors.orange),
+                  const SizedBox(width: 5),
                   Text(reserva['hora']),
                 ],
               ),

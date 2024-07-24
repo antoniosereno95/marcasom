@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class ResumoReservaScreen extends StatelessWidget {
   final Map<String, dynamic> reserva;
 
-  const ResumoReservaScreen({required this.reserva});
+  const ResumoReservaScreen({super.key, required this.reserva});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -21,7 +21,7 @@ class ResumoReservaScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: Text(
                 'Resumo da Reserva',
                 style: TextStyle(
@@ -75,7 +75,7 @@ class ResumoReservaScreen extends StatelessWidget {
               const SizedBox(height: 5),
               Row(
                 children: [
-                  Icon(Icons.location_on, color: Colors.orange),
+                  const Icon(Icons.location_on, color: Colors.orange),
                   const SizedBox(width: 5),
                   Text(reserva['local']),
                 ],
@@ -84,11 +84,11 @@ class ResumoReservaScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                Icon(Icons.calendar_today, color: Colors.orange),
+                const Icon(Icons.calendar_today, color: Colors.orange),
                 const SizedBox(width: 5),
                 Text(reserva['data']),
                 const SizedBox(width: 20),
-                Icon(Icons.access_time, color: Colors.orange),
+                const Icon(Icons.access_time, color: Colors.orange),
                 const SizedBox(width: 5),
                 Text(reserva['hora']),
               ],

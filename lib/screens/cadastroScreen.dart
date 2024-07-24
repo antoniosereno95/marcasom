@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }
@@ -30,15 +32,15 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                SizedBox(height: 100),
+                const SizedBox(height: 100),
                 Center(
                   child: SvgPicture.asset(
-                    'lib/assets/Logo-LoginCadastro.svg',
+                    'assets/Logo-LoginCadastro.svg',
                     width: 240,
                     height: 40,
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 TextFormField(
                   controller: nomeController,
                   decoration: InputDecoration(
@@ -49,7 +51,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     filled: true,
                     fillColor: Colors.grey[200],
-                    contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -58,7 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
@@ -69,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     filled: true,
                     fillColor: Colors.grey[200],
-                    contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -79,7 +81,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: senhaController,
                   decoration: InputDecoration(
@@ -90,9 +92,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     filled: true,
                     fillColor: Colors.grey[200],
-                    contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     suffixIcon: Padding(
-                      padding: EdgeInsets.only(right: 12.0),
+                      padding: const EdgeInsets.only(right: 12.0),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -115,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: confirmarSenhaController,
                   decoration: InputDecoration(
@@ -126,9 +128,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     filled: true,
                     fillColor: Colors.grey[200],
-                    contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     suffixIcon: Padding(
-                      padding: EdgeInsets.only(right: 12.0),
+                      padding: const EdgeInsets.only(right: 12.0),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -153,7 +155,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: submitForm,
                   style: ElevatedButton.styleFrom(
@@ -162,28 +164,28 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
                     child: Text(
                       'Cadastrar',
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Align(
                   alignment: Alignment.center,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Já se cadastrou?',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, '/login');
@@ -200,28 +202,28 @@ class _SignupScreenState extends State<SignupScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'Ao se cadastrar, você aceita nossos ',
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                       TextSpan(
                         text: 'Termos de Uso',
-                        style: TextStyle(color: Colors.orange, fontSize: 14),
+                        style: const TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                           },
                       ),
-                      TextSpan(
+                      const TextSpan(
                         text: ' e nossa ',
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                       TextSpan(
                         text: 'Política de Privacidade.',
-                        style: TextStyle(color: Colors.orange, fontSize: 14),
+                        style: const TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                           },
@@ -229,33 +231,33 @@ class _SignupScreenState extends State<SignupScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'As informações coletadas pela Comuto Serviços de Tecnologia LTDA são processadas com o propósito de criar sua conta, administrar sua reserva, utilizar e melhorar nossos serviços e garantir a segurança de nossa plataforma.',
                   style: TextStyle(color: Colors.black, fontSize: 14),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'Você possui direitos sobre seus dados pessoais e pode exercê-los entrando em contato com a MarcaSoM através do nosso ',
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                       TextSpan(
                         text: 'Formulário de contato.',
-                        style: TextStyle(color: Colors.orange, fontSize: 14),
+                        style: const TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                           },
                       ),
-                      TextSpan(
+                      const TextSpan(
                         text: ' Para saber mais sobre seus direitos e sobre como lidamos com seus dados pessoais, confira nossa ',
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                       TextSpan(
                         text: 'Política de Privacidade.',
-                        style: TextStyle(color: Colors.orange, fontSize: 14),
+                        style: const TextStyle(color: Colors.orange, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                           },

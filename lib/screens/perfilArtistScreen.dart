@@ -26,7 +26,7 @@ class PerfilArtistaScreen extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('lib/assets/perfil_artista.jpg'),
+              backgroundImage: AssetImage('assets/perfil_artista.png'),
             ),
             const SizedBox(height: 20),
             Text(

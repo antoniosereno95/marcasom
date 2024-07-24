@@ -11,37 +11,39 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   initializeDateFormatting('pt_BR', null).then((_) {
-    runApp(MyApp());
+    runApp(const MyApp());
   });
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MarcaSoM',
       theme: ThemeData(
-        primaryColor: Color(0xFF9B59B6),
-        secondaryHeaderColor: Color(0xFFF1C40F),
+        primaryColor: const Color(0xFF9B59B6),
+        secondaryHeaderColor: const Color(0xFFF1C40F),
         fontFamily: 'Roboto',
       ),
-            localizationsDelegates: [
+            localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en', 'US'),
-        const Locale('pt', 'BR'),
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('pt', 'BR'),
       ],
-      home: LoadingScreen(),
+      home: const LoadingScreen(),
       routes: {
-        '/login': (context) => LoginScreen(),
-        '/signup': (context) => SignupScreen(),
-        '/home': (context) => BuscaInicial(),
-        '/perfil': (context) => PerfilScreen(),
-        '/minhasreservas': (context) => MinhasReservasScreen(),
-        '/offerService': (context) => OfferService(),
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(),
+        '/home': (context) => const BuscaInicial(),
+        '/perfil': (context) => const PerfilScreen(),
+        '/minhasreservas': (context) => const MinhasReservasScreen(),
+        '/offerService': (context) => const OfferService(),
       },
     );
   }

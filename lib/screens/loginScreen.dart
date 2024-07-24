@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -19,21 +21,21 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
               Center(
                 child: SvgPicture.asset(
-                  'lib/assets/Logo-LoginCadastro.svg',
+                  'assets/Logo-LoginCadastro.svg',
                   width: 240,
                   height: 40,
                 ),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -44,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 ),
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) {
@@ -57,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: senhaController,
                 decoration: InputDecoration(
@@ -68,9 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   filled: true,
                   fillColor: Colors.grey[200],
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   suffixIcon: Padding(
-                    padding: EdgeInsets.only(right: 12.0),
+                    padding: const EdgeInsets.only(right: 12.0),
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -96,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: submitForm,
                 style: ElevatedButton.styleFrom(
@@ -113,20 +115,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Align(
                 alignment: Alignment.center,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Ainda não é membro?',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');
