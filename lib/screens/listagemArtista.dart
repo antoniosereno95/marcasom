@@ -2,14 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marcasom/screens/perfilArtistScreen.dart';
 import 'package:marcasom/widgets/filtroArtista.dart';
 
-class ListagemArtista extends StatelessWidget {
-  ListagemArtista({super.key, required this.data, this.genero = '', required this.local});
-  
-  final String local;
-  final String data;
-  final String genero;
-  
-  final List<Map<String, String>> musicians = [
+final List<Map<String, String>> musicians = [
     {
       "nome": "Sibá",
       "tipo": "Solo",
@@ -352,37 +345,55 @@ class ListagemArtista extends StatelessWidget {
       "email": "souldorecife@musica.com"
     }
 ];
+class ListagemArtista extends StatefulWidget {
+  const ListagemArtista({super.key, required this.data, this.genero = '', required this.local});
+  
+  final String local;
+  final String data;
+  final String genero;
+
+@override
+  _ListagemArtistaState createState() => _ListagemArtistaState();
+}
+
+  class _ListagemArtistaState extends State<ListagemArtista> {
+  String _filterOption = '';
+
+  void _updateFilter(String filterOption) {
+    setState(() {
+      _filterOption = filterOption;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(data);
-    List<Map<String, String>> filteredMusicians = musicians.where((musician) => (musician['generoMusical'] == genero && musician['local'] == local)).toList();
+    List<Map<String, String>> filteredMusicians = musicians.where((musician) => (musician['generoMusical'] == widget.genero && musician['local'] == widget.local)).toList();
 
-    if(genero == ''){
-      filteredMusicians = musicians.where((musician) => (musician['local'] == local)).toList();
+    if(widget.genero == ''){
+      filteredMusicians = musicians.where((musician) => (musician['local'] == widget.local)).toList();
     }
-    
+
+    // Ordenar conforme a opção selecionada
+    switch (_filterOption) {
+      case 'Mais antigo no mercado':
+        filteredMusicians.sort((a, b) => int.parse(a['dataNascimento']!.split('/')[2]).compareTo(int.parse(b['dataNascimento']!.split('/')[2])));
+        break;
+      case 'Preço mais baixo':
+        filteredMusicians.sort((a, b) => double.parse(a['cache']!.replaceAll(RegExp(r'[^\d]'), '')).compareTo(double.parse(b['cache']!.replaceAll(RegExp(r'[^\d]'), ''))));
+        break;
+      case 'Melhor avaliado':
+        filteredMusicians.sort((a, b) => double.parse(b['avaliacao']!).compareTo(double.parse(a['avaliacao']!)));
+        break;
+      case 'Preço mais alto':
+        filteredMusicians.sort((a, b) => double.parse(a['cache']!.replaceAll(RegExp(r'[^\d]'), '')).compareTo(double.parse(b['cache']!.replaceAll(RegExp(r'[^\d]'), ''))));
+        filteredMusicians = filteredMusicians.reversed.toList(); // Inverter a lista para obter o preço mais alto primeiro
+        break;
+    }
+
     return Scaffold(
       body: Column(
         children: [
-          const BarraSuperior(),
-          Expanded(
-            child: ListaArtistas(musicians: filteredMusicians),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class BarraSuperior extends StatelessWidget {
-  const BarraSuperior({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
+          Container(
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -405,12 +416,15 @@ class BarraSuperior extends StatelessWidget {
               },
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Filtros()),
-                );
-              },
+              onTap: () async {
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Filtros()),
+              );
+              if (result != null) {
+                _updateFilter(result as String);
+              }
+            },
               child: const Text(
                 'Filtros',
                 style: TextStyle(
@@ -421,6 +435,12 @@ class BarraSuperior extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    ),
+          Expanded(
+            child: ListaArtistas(musicians: filteredMusicians),
+          ),
+        ],
       ),
     );
   }
@@ -481,7 +501,7 @@ class ArtistaCard extends StatelessWidget {
                     ),
                   ),
                   Text(musicians[i]['tipo']!),
-                  Text('Gênero musical: ' + musicians[i]['generoMusical']!),
+                  Text('Gênero musical: ${musicians[i]['generoMusical']!}'),
                   Row(
                     children: [
                       Text(
