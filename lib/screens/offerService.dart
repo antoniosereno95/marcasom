@@ -7,7 +7,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import '../widgets/barraNavegacao.dart';
 
 class OfferService extends StatefulWidget {
-  const OfferService({Key? key}) : super(key: key);
+  const OfferService({super.key});
 
   @override
   _OfferServiceState createState() => _OfferServiceState();
@@ -108,9 +108,9 @@ class _OfferServiceState extends State<OfferService> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Oferecer Serviço'),
+        title: const Text('Oferecer Serviço'),
         leading: IconButton(
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
           onPressed: () {
             Navigator.pushNamed(context, '/home');
           },
@@ -122,8 +122,8 @@ class _OfferServiceState extends State<OfferService> {
           key: _formKey,
           child: ListView(
             children: [
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Informações do Artista',
                 style: TextStyle(
                   fontFamily: 'Roboto',
@@ -132,7 +132,7 @@ class _OfferServiceState extends State<OfferService> {
                   color: Color(0xFF2C3E50),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Nome do artista',
@@ -142,7 +142,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -154,7 +154,7 @@ class _OfferServiceState extends State<OfferService> {
                   artistName = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Gênero musical',
@@ -164,7 +164,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -176,7 +176,7 @@ class _OfferServiceState extends State<OfferService> {
                   musicGenre = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: _countryController,
@@ -188,7 +188,7 @@ class _OfferServiceState extends State<OfferService> {
                       borderRadius: BorderRadius.circular(20),
                       borderSide: BorderSide.none,
                     ),
-                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   ),
                 ),
                 suggestionsCallback: (pattern) async {
@@ -212,7 +212,7 @@ class _OfferServiceState extends State<OfferService> {
                   selectedCountry = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: _stateController,
@@ -224,7 +224,7 @@ class _OfferServiceState extends State<OfferService> {
                       borderRadius: BorderRadius.circular(20),
                       borderSide: BorderSide.none,
                     ),
-                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   ),
                 ),
                 suggestionsCallback: (pattern) async {
@@ -248,7 +248,7 @@ class _OfferServiceState extends State<OfferService> {
                   selectedState = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: _cityController,
@@ -260,7 +260,7 @@ class _OfferServiceState extends State<OfferService> {
                       borderRadius: BorderRadius.circular(20),
                       borderSide: BorderSide.none,
                     ),
-                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   ),
                 ),
                 suggestionsCallback: (pattern) async {
@@ -284,7 +284,7 @@ class _OfferServiceState extends State<OfferService> {
                   selectedCity = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _dateController,
                 readOnly: true,
@@ -296,7 +296,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 onTap: () {
                   _selectDate(context);
@@ -311,7 +311,7 @@ class _OfferServiceState extends State<OfferService> {
                   availableDates = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _feeController,
                 decoration: InputDecoration(
@@ -322,7 +322,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -334,7 +334,7 @@ class _OfferServiceState extends State<OfferService> {
                   performanceFee = _feeController.text;
                 },
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               Align(
                 alignment: Alignment.bottomRight,
                 child: FloatingActionButton.extended(
@@ -344,7 +344,7 @@ class _OfferServiceState extends State<OfferService> {
                     }
                   },
                   backgroundColor: Colors.purple,
-                  label: Icon(Icons.check, color: Colors.white),
+                  label: const Icon(Icons.check, color: Colors.white),
                 ),
               ),
             ],
