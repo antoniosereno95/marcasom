@@ -355,6 +355,7 @@ class ListagemArtista extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(data);
     List<Map<String, String>> filteredMusicians = musicians.where((musician) => (musician['generoMusical'] == genero && musician['local'] == local)).toList();
 
     if(genero == ''){
@@ -465,7 +466,7 @@ class ArtistaCard extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage('assets/PerfilIcon.svg'),
+              backgroundImage: AssetImage('assets/PerfilIcon.png'),
             ),
             const SizedBox(width: 16),
             Expanded(

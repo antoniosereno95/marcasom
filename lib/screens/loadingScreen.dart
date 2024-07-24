@@ -27,7 +27,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              'lib/assets/Logo-Tela de Loading.svg',
+              'assets/Logo-Tela de Loading.svg',
               width: 200,
               height: 220,
             ),

@@ -12,7 +12,7 @@ class BuscaInicial extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("lib/assets/marcasom 1.png"),
+            image: AssetImage("assets/marcasom 1.png"),
             fit: BoxFit.cover,
           ),
         ),

@@ -30,7 +30,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/assets/Logo-LoginCadastro.svg
-    - lib/assets/Logo-Tela de Loading.svg
-    - lib/assets/ImagemDaHome.svg
-    - lib/assets/marcasom 1.png
+    - assets/
