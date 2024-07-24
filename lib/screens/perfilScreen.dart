@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marcasom/screens/loginScreen.dart';
-import '../widgets/barraNavegacao.dart'; // Certifique-se de ter a tela de login importada
+import '../widgets/barraNavegacao.dart'; 
 
 class PerfilScreen extends StatefulWidget {
   const PerfilScreen({super.key});

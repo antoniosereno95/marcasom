@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:intl/intl.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import '../widgets/barraNavegacao.dart';
 
 class OfferService extends StatefulWidget {
-  const OfferService({super.key});
+  const OfferService({Key? key}) : super(key: key);
 
   @override
   _OfferServiceState createState() => _OfferServiceState();
@@ -18,13 +23,94 @@ class _OfferServiceState extends State<OfferService> {
   String availableDates = '';
   String performanceFee = '';
 
+  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _stateController = TextEditingController();
+  final MoneyMaskedTextController _feeController = MoneyMaskedTextController(leftSymbol: 'R\$ ', decimalSeparator: ',');
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+      locale: const Locale('pt', 'BR'),
+    );
+    if (picked != null) {
+      setState(() {
+        _dateController.text = DateFormat('dd/MM/yyyy', 'pt_BR').format(picked);
+      });
+    }
+  }
+
+  Future<List<String>> _getCities(String pattern) async {
+    final response = await http.get(
+      Uri.parse('https://servicodados.ibge.gov.br/api/v1/localidades/municipios'),
+    );
+
+    if (response.statusCode == 200) {
+      List data = json.decode(response.body);
+      List<String> cities = data.map((city) => city['nome'] as String).toList();
+      return cities.where((city) => city.toLowerCase().contains(pattern.toLowerCase())).toList();
+    } else {
+      throw Exception('Erro ao carregar as cidades');
+    }
+  }
+
+  Future<List<String>> _getCountries(String pattern) async {
+    List<String> countries = [
+      'Brasil',
+      'Estados Unidos',
+      'Argentina',
+      'Canadá',
+      'França',
+      'Alemanha',
+      'Japão'
+    ];
+    return countries.where((country) => country.toLowerCase().contains(pattern.toLowerCase())).toList();
+  }
+
+  Future<List<String>> _getStates(String pattern) async {
+    List<String> states = [
+      'Acre existe mesmo?',
+      'Alagoas',
+      'Amapá',
+      'Amazonas',
+      'Bahia',
+      'Ceará',
+      'Distrito Federal',
+      'Espírito Santo',
+      'Goiás',
+      'Maranhão',
+      'Mato Grosso',
+      'Mato Grosso do Sul',
+      'Minas Gerais',
+      'Pará',
+      'Paraíba',
+      'Paraná',
+      'Pernambuco',
+      'Piauí',
+      'Rio de Janeiro',
+      'Rio Grande do Norte',
+      'Rio Grande do Sul',
+      'Rondônia',
+      'Roraima',
+      'Santa Catarina',
+      'São Paulo',
+      'Sergipe',
+      'Tocantins'
+    ];
+    return states.where((state) => state.toLowerCase().contains(pattern.toLowerCase())).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Oferecer Serviço'),
+        title: Text('Oferecer Serviço'),
         leading: IconButton(
-          icon: const Icon(Icons.close),
+          icon: Icon(Icons.close),
           onPressed: () {
             Navigator.pushNamed(context, '/home');
           },
@@ -36,8 +122,8 @@ class _OfferServiceState extends State<OfferService> {
           key: _formKey,
           child: ListView(
             children: [
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 'Informações do Artista',
                 style: TextStyle(
                   fontFamily: 'Roboto',
@@ -46,7 +132,7 @@ class _OfferServiceState extends State<OfferService> {
                   color: Color(0xFF2C3E50),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Nome do artista',
@@ -56,7 +142,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -68,7 +154,7 @@ class _OfferServiceState extends State<OfferService> {
                   artistName = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Gênero musical',
@@ -78,7 +164,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -90,62 +176,32 @@ class _OfferServiceState extends State<OfferService> {
                   musicGenre = value!;
                 },
               ),
-              const SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Cidade de origem',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
+              SizedBox(height: 20),
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  controller: _countryController,
+                  decoration: InputDecoration(
+                    hintText: 'País',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira a cidade de origem';
-                  }
-                  return null;
+                suggestionsCallback: (pattern) async {
+                  return await _getCountries(pattern);
                 },
-                onSaved: (value) {
-                  selectedCity = value!;
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
                 },
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Estado',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o estado';
-                  }
-                  return null;
+                onSuggestionSelected: (suggestion) {
+                  _countryController.text = suggestion;
                 },
-                onSaved: (value) {
-                  selectedState = value!;
-                },
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'País',
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira o país';
@@ -156,18 +212,95 @@ class _OfferServiceState extends State<OfferService> {
                   selectedCountry = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  controller: _stateController,
+                  decoration: InputDecoration(
+                    hintText: 'Estado',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  ),
+                ),
+                suggestionsCallback: (pattern) async {
+                  return await _getStates(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _stateController.text = suggestion;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira o estado';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  selectedState = value!;
+                },
+              ),
+              SizedBox(height: 20),
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  controller: _cityController,
+                  decoration: InputDecoration(
+                    hintText: 'Cidade de origem',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  ),
+                ),
+                suggestionsCallback: (pattern) async {
+                  return await _getCities(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _cityController.text = suggestion;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira a cidade de origem';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  selectedCity = value!;
+                },
+              ),
+              SizedBox(height: 20),
               TextFormField(
+                controller: _dateController,
+                readOnly: true,
                 decoration: InputDecoration(
-                  hintText: 'Datas disponíveis',
+                  hintText: 'Datas',
                   filled: true,
                   fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
+                onTap: () {
+                  _selectDate(context);
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira as datas disponíveis';
@@ -178,8 +311,9 @@ class _OfferServiceState extends State<OfferService> {
                   availableDates = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextFormField(
+                controller: _feeController,
                 decoration: InputDecoration(
                   hintText: 'Valor da apresentação',
                   filled: true,
@@ -188,7 +322,7 @@ class _OfferServiceState extends State<OfferService> {
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -197,28 +331,30 @@ class _OfferServiceState extends State<OfferService> {
                   return null;
                 },
                 onSaved: (value) {
-                  performanceFee = value!;
+                  performanceFee = _feeController.text;
                 },
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 32),
               Align(
                 alignment: Alignment.bottomRight,
                 child: FloatingActionButton.extended(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      // Process the form data
                     }
                   },
                   backgroundColor: Colors.purple,
-                  label: const Icon(Icons.check, color: Colors.white),
+                  label: Icon(Icons.check, color: Colors.white),
                 ),
               ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BarraDeNavegacao(selectedIndex: 1, onTap: (int index) {  },),
+      bottomNavigationBar: BarraDeNavegacao(
+        selectedIndex: 1,
+        onTap: (int index) {},
+      ),
     );
   }
 }
